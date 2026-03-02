@@ -743,6 +743,29 @@
         .tr-table tr:last-child td { border-bottom: none; }
         .tr-table tr:hover td { background: rgba(37, 99, 235, 0.03); }
         .tr-table .pair-cell { font-weight: 600; color: var(--text-primary); font-family: 'Space Mono', monospace; font-size: 0.82rem; }
+        .tr-table .chart-thumb {
+            width: 56px; height: 36px; border-radius: 6px; object-fit: cover;
+            border: 1px solid var(--border-glass); cursor: pointer; transition: all 0.3s;
+            opacity: 0.85;
+        }
+        .tr-table .chart-thumb:hover { opacity: 1; border-color: var(--blue-electric); transform: scale(1.08); }
+        .tr-lightbox {
+            display: none; position: fixed; inset: 0; z-index: 2000;
+            background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(8px);
+            align-items: center; justify-content: center; cursor: pointer;
+        }
+        .tr-lightbox.active { display: flex; }
+        .tr-lightbox img {
+            max-width: 90vw; max-height: 85vh; border-radius: 12px;
+            border: 1px solid var(--border-glass); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+        }
+        .tr-lightbox-close {
+            position: absolute; top: 24px; right: 32px; width: 40px; height: 40px;
+            background: var(--bg-glass); border: 1px solid var(--border-glass);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: all 0.3s;
+        }
+        .tr-lightbox-close:hover { border-color: var(--blue-electric); color: var(--text-primary); }
         .tr-table .direction-buy { color: var(--green-candle); font-weight: 600; }
         .tr-table .direction-sell { color: var(--red-candle); font-weight: 600; }
         .tr-table .pips-positive { color: var(--green-candle); font-weight: 700; font-family: 'Space Mono', monospace; }
@@ -1137,9 +1160,10 @@
             </div>
 
             <div class="tr-table-wrap rv rv-d3">
-                <table class="tr-table">
+                <table class="tr-table" id="tradeTable">
                     <thead>
                         <tr>
+                            <th>Chart</th>
                             <th>Pair</th>
                             <th>Day</th>
                             <th>Direction</th>
@@ -1149,15 +1173,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr data-category="forex">
+                            <td><img src="assets/IMG_5238.JPEG" alt="EUR/USD chart" class="chart-thumb" onclick="openLightbox(this.src)"></td>
                             <td class="pair-cell">EUR/USD</td>
                             <td>Fri</td>
-                            <td class="direction-buy">BUY</td>
+                            <td class="direction-sell">SELL</td>
                             <td class="pips-positive">+82</td>
                             <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 27, 2026</td>
                         </tr>
-                        <tr>
+                        <tr data-category="forex">
+                            <td><img src="assets/IMG_5239.JPEG" alt="GBP/JPY chart" class="chart-thumb" onclick="openLightbox(this.src)"></td>
                             <td class="pair-cell">GBP/JPY</td>
                             <td>Thu</td>
                             <td class="direction-sell">SELL</td>
@@ -1165,47 +1191,44 @@
                             <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 26, 2026</td>
                         </tr>
-                        <tr>
+                        <tr data-category="forex">
+                            <td><img src="assets/IMG_5240.JPEG" alt="USD/CHF chart" class="chart-thumb" onclick="openLightbox(this.src)"></td>
                             <td class="pair-cell">USD/CHF</td>
                             <td>Wed</td>
-                            <td class="direction-buy">BUY</td>
-                            <td class="pips-negative">-32</td>
-                            <td><span class="tr-result-badge loss">Loss</span></td>
+                            <td class="direction-sell">SELL</td>
+                            <td class="pips-positive">+71</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 25, 2026</td>
                         </tr>
-                        <tr>
-                            <td class="pair-cell">XAU/USD</td>
+                        <tr data-category="forex">
+                            <td><img src="assets/IMG_5241.JPEG" alt="XAU/USD chart" class="chart-thumb" onclick="openLightbox(this.src)"></td>
+                            <td class="pair-cell">GBP/USD</td>
                             <td>Fri</td>
                             <td class="direction-sell">SELL</td>
-                            <td class="pips-positive">+210</td>
+                            <td class="pips-positive">+63</td>
                             <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 20, 2026</td>
                         </tr>
-                        <tr>
+                        <tr data-category="indices">
+                            <td><img src="assets/IMG_5242.JPEG" alt="NAS100 chart" class="chart-thumb" onclick="openLightbox(this.src)"></td>
                             <td class="pair-cell">NAS100</td>
                             <td>Thu</td>
-                            <td class="direction-buy">BUY</td>
+                            <td class="direction-sell">SELL</td>
                             <td class="pips-positive">+175</td>
                             <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 19, 2026</td>
                         </tr>
-                        <tr>
-                            <td class="pair-cell">GBP/USD</td>
-                            <td>Wed</td>
-                            <td class="direction-sell">SELL</td>
-                            <td class="pips-positive">+63</td>
-                            <td><span class="tr-result-badge win">Win</span></td>
-                            <td>Feb 18, 2026</td>
-                        </tr>
-                        <tr>
+                        <tr data-category="forex">
+                            <td><img src="assets/IMG_5244.JPEG" alt="USD/JPY chart" class="chart-thumb" onclick="openLightbox(this.src)"></td>
                             <td class="pair-cell">USD/JPY</td>
                             <td>Fri</td>
-                            <td class="direction-buy">BUY</td>
+                            <td class="direction-sell">SELL</td>
                             <td class="pips-positive">+94</td>
                             <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 13, 2026</td>
                         </tr>
-                        <tr>
+                        <tr data-category="forex">
+                            <td></td>
                             <td class="pair-cell">EUR/GBP</td>
                             <td>Thu</td>
                             <td class="direction-sell">SELL</td>
@@ -1213,7 +1236,8 @@
                             <td><span class="tr-result-badge loss">Loss</span></td>
                             <td>Feb 12, 2026</td>
                         </tr>
-                        <tr>
+                        <tr data-category="crypto">
+                            <td></td>
                             <td class="pair-cell">BTC/USD</td>
                             <td>Wed</td>
                             <td class="direction-buy">BUY</td>
@@ -1221,7 +1245,8 @@
                             <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 11, 2026</td>
                         </tr>
-                        <tr>
+                        <tr data-category="forex">
+                            <td></td>
                             <td class="pair-cell">AUD/USD</td>
                             <td>Fri</td>
                             <td class="direction-sell">SELL</td>
@@ -1229,8 +1254,23 @@
                             <td><span class="tr-result-badge win">Win</span></td>
                             <td>Feb 6, 2026</td>
                         </tr>
+                        <tr data-category="crypto">
+                            <td></td>
+                            <td class="pair-cell">ETH/USD</td>
+                            <td>Thu</td>
+                            <td class="direction-buy">BUY</td>
+                            <td class="pips-positive">+185</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 5, 2026</td>
+                        </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Lightbox for chart images -->
+            <div class="tr-lightbox" id="trLightbox" onclick="closeLightbox()">
+                <button class="tr-lightbox-close" aria-label="Close">&times;</button>
+                <img id="lightboxImg" src="" alt="Trade chart">
             </div>
 
             <div class="tr-monthly rv rv-d4">
@@ -1552,6 +1592,42 @@
                 const t = document.querySelector(this.getAttribute('href'));
                 if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
+        });
+
+        /* ── Trade filter pills ── */
+        const filterPills = document.querySelectorAll('.tr-pill');
+        const tradeRows = document.querySelectorAll('#tradeTable tbody tr');
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                filterPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.textContent.trim().toLowerCase();
+                tradeRows.forEach(row => {
+                    if (filter === 'all') {
+                        row.style.display = '';
+                    } else {
+                        const category = row.getAttribute('data-category');
+                        row.style.display = category === filter ? '' : 'none';
+                    }
+                });
+            });
+        });
+
+        /* ── Lightbox for chart images ── */
+        function openLightbox(src) {
+            const lightbox = document.getElementById('trLightbox');
+            const img = document.getElementById('lightboxImg');
+            img.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            const lightbox = document.getElementById('trLightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 </body>
