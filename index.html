@@ -7,7 +7,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>ΣURGICAL FX | Trade with Surgical Precision</title>
-    <meta name="description" content="ΣURGICAL FX — Premium forex trading signals and education. Master the markets with surgical precision. Join our Discord community for daily setups, expert analysis, and trading education.">
+    <meta name="description" content="ΣURGICAL FX. Premium forex trading signals and education. Master the markets with surgical precision. Join our Discord community for daily setups, expert analysis, and trading education.">
     <meta name="keywords" content="forex trading, forex signals, trading education, surgical fx, forex community, trading discord">
     <meta property="og:title" content="ΣURGICAL FX | Trade with Surgical Precision">
     <meta property="og:description" content="Premium forex trading signals and education. Master the markets with surgical precision.">
@@ -86,7 +86,7 @@
         }
         .ticker {
             display: flex;
-            animation: tickerScroll 40s linear infinite;
+            animation: tickerScroll 65s linear infinite;
             white-space: nowrap;
         }
         .ticker-item {
@@ -676,6 +676,100 @@
         .test-role { font-size: 0.7rem; color: var(--text-muted); }
 
         /* ═══════════════════════════════════════
+           TRACK RECORD
+           ═══════════════════════════════════════ */
+        .track-record { background: var(--bg-void); position: relative; overflow: hidden; }
+        .tr-header { text-align: center; margin-bottom: 64px; }
+        .tr-header .section-label { justify-content: center; }
+        .tr-header .section-desc { margin: 0 auto; }
+        .tr-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 48px; }
+        .tr-stat-card {
+            background: var(--bg-glass); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass); border-radius: 16px;
+            padding: 28px 20px; text-align: center; transition: all 0.3s;
+        }
+        .tr-stat-card:hover { border-color: var(--border-glow); transform: translateY(-4px); }
+        .tr-stat-value {
+            font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px;
+        }
+        .tr-stat-value.green { color: var(--green-candle); }
+        .tr-stat-value.blue {
+            background: linear-gradient(135deg, var(--blue-electric), var(--blue-accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .tr-stat-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+
+        .tr-schedule-note {
+            display: flex; align-items: center; gap: 16px;
+            background: var(--bg-glass); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glow); border-radius: 14px;
+            padding: 20px 28px; margin-bottom: 40px;
+        }
+        .tr-schedule-icon { font-size: 1.4rem; flex-shrink: 0; }
+        .tr-schedule-text { display: flex; flex-direction: column; gap: 4px; }
+        .tr-schedule-text strong { font-size: 0.88rem; color: var(--blue-accent); letter-spacing: 0.5px; }
+        .tr-schedule-text span { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; }
+
+        .tr-trades-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
+        }
+        .tr-trades-title { font-size: 1.2rem; font-weight: 700; }
+        .tr-filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tr-pill {
+            padding: 6px 16px; border-radius: 100px; font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+            background: var(--bg-glass); border: 1px solid var(--border-glass);
+            color: var(--text-secondary); transition: all 0.3s;
+        }
+        .tr-pill.active, .tr-pill:hover { background: var(--blue-subtle); border-color: var(--blue-electric); color: var(--blue-accent); }
+
+        .tr-table-wrap {
+            background: var(--bg-glass); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass); border-radius: 16px;
+            overflow: hidden;
+        }
+        .tr-table { width: 100%; border-collapse: collapse; }
+        .tr-table thead { background: rgba(37, 99, 235, 0.06); }
+        .tr-table th {
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--text-muted);
+            padding: 14px 20px; text-align: left; border-bottom: 1px solid var(--border-glass);
+        }
+        .tr-table td {
+            padding: 16px 20px; font-size: 0.88rem; border-bottom: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+        }
+        .tr-table tr:last-child td { border-bottom: none; }
+        .tr-table tr:hover td { background: rgba(37, 99, 235, 0.03); }
+        .tr-table .pair-cell { font-weight: 600; color: var(--text-primary); font-family: 'Space Mono', monospace; font-size: 0.82rem; }
+        .tr-table .direction-buy { color: var(--green-candle); font-weight: 600; }
+        .tr-table .direction-sell { color: var(--red-candle); font-weight: 600; }
+        .tr-table .pips-positive { color: var(--green-candle); font-weight: 700; font-family: 'Space Mono', monospace; }
+        .tr-table .pips-negative { color: var(--red-candle); font-weight: 700; font-family: 'Space Mono', monospace; }
+        .tr-result-badge {
+            display: inline-flex; padding: 3px 10px; border-radius: 100px;
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .tr-result-badge.win { background: var(--green-glow); color: var(--green-candle); }
+        .tr-result-badge.loss { background: var(--red-glow); color: var(--red-candle); }
+
+        .tr-monthly { margin-top: 48px; }
+        .tr-monthly-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 24px; }
+        .tr-monthly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .tr-month-card {
+            background: var(--bg-glass); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass); border-radius: 14px;
+            padding: 24px; transition: all 0.3s;
+        }
+        .tr-month-card:hover { border-color: var(--border-glow); transform: translateY(-2px); }
+        .tr-month-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+        .tr-month-pips { font-size: 1.6rem; font-weight: 800; color: var(--green-candle); margin-bottom: 6px; font-family: 'Space Mono', monospace; }
+        .tr-month-details { display: flex; gap: 16px; }
+        .tr-month-detail { font-size: 0.72rem; color: var(--text-muted); }
+        .tr-month-detail span { color: var(--text-secondary); font-weight: 600; }
+
+        /* ═══════════════════════════════════════
            FINAL CTA
            ═══════════════════════════════════════ */
         .cta-section {
@@ -742,6 +836,9 @@
             .services-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
             .test-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
             .how-steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; gap: 20px; }
+            .tr-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .tr-monthly-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .tr-table-wrap { overflow-x: auto; }
             .how-steps::before { display: none; }
         }
         @media (max-width: 768px) {
@@ -784,6 +881,7 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#how" class="nav-link">How It Works</a></li>
+                <li><a href="#track-record" class="nav-link">Track Record</a></li>
                 <li><a href="#testimonials" class="nav-link">Community</a></li>
                 <li><a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="nav-cta">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
@@ -800,6 +898,7 @@
         <a href="#about" class="ml">About</a>
         <a href="#services" class="ml">Services</a>
         <a href="#how" class="ml">How It Works</a>
+        <a href="#track-record" class="ml">Track Record</a>
         <a href="#testimonials" class="ml">Community</a>
         <a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="ml" style="color: var(--blue-electric);">Join Discord</a>
         <a href="https://www.instagram.com/surgicalfx_" target="_blank" rel="noopener" class="ml">Instagram</a>
@@ -829,7 +928,7 @@
                 <span class="line1">Trade with</span>
                 <span class="line2">Surgical Precision</span>
             </h1>
-            <p class="hero-sub rv rv-d2">Master the forex markets with expert signals, proven strategies, and a community built on discipline. No noise — just precise, calculated moves.</p>
+            <p class="hero-sub rv rv-d2">Master the forex markets with expert signals, proven strategies, and a community built on discipline. No noise. Just precise, calculated moves.</p>
             <div class="hero-actions rv rv-d3">
                 <a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="btn btn-primary">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
@@ -841,7 +940,7 @@
                 </a>
             </div>
         </div>
-        <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+        <div class="scroll-hint"><div class="scroll-line"></div></div>
     </section>
 
     <!-- ═══════ ABOUT ═══════ -->
@@ -868,8 +967,8 @@
                 <div class="about-text">
                     <div class="section-label rv">About</div>
                     <h2 class="section-title rv rv-d1">Precision is<br>not optional.</h2>
-                    <p class="section-desc rv rv-d2">Founded by Malik, <span class="mono">Σ</span>urgical FX was born from a simple belief: trading isn't gambling — it's a discipline. Trading since 2019 and operating from Okinawa, Japan, Malik brings a surgeon's mindset to the forex markets — every trade planned, every risk calculated, every move intentional.</p>
-                    <p class="section-desc rv rv-d3" style="margin-top: 16px; margin-bottom: 32px;">What started as a personal trading journey evolved into a full business in 2021 and grew into a community of traders who refuse to leave their results to chance. We don't chase — we execute.</p>
+                    <p class="section-desc rv rv-d2">Founded by Mahlik, <span class="mono">Σ</span>urgical FX was born from a simple belief: trading isn't gambling, it's a discipline. Trading since 2019 and operating from Okinawa, Japan, Mahlik brings a surgeon's mindset to the forex markets. Every trade planned, every risk calculated, every move intentional.</p>
+                    <p class="section-desc rv rv-d3" style="margin-top: 16px; margin-bottom: 32px;">What started as a personal trading journey evolved into a full business in 2021 and grew into a community of traders who refuse to leave their results to chance. We don't chase. We execute.</p>
                     <div class="about-traits rv rv-d4">
                         <span class="trait"><span class="trait-dot b"></span> Discipline</span>
                         <span class="trait"><span class="trait-dot g"></span> Precision</span>
@@ -888,7 +987,7 @@
             <div class="services-header">
                 <div class="section-label rv">Services</div>
                 <h2 class="section-title rv rv-d1">What we deliver.</h2>
-                <p class="section-desc rv rv-d2">Two pillars of our approach — precise signals and deep education. You get both.</p>
+                <p class="section-desc rv rv-d2">Two pillars of our approach. Precise signals and deep education. You get both.</p>
             </div>
             <div class="services-grid">
                 <div class="svc-card signals rv" data-tilt>
@@ -899,7 +998,7 @@
                         </svg>
                     </div>
                     <h3 class="svc-title">Forex Signals</h3>
-                    <p class="svc-desc">Precision trade setups delivered daily. Every signal comes with clear entries, stop-losses, and take-profit levels — no guesswork, just execution.</p>
+                    <p class="svc-desc">Precision trade setups delivered daily. Every signal comes with clear entries, stop-losses, and take-profit levels. No guesswork, just execution.</p>
                     <ul class="svc-features">
                         <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Daily trade setups with clear entries</li>
                         <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Stop-loss & take-profit levels</li>
@@ -960,7 +1059,7 @@
             <div class="how-header">
                 <div class="section-label rv">How It Works</div>
                 <h2 class="section-title rv rv-d1">Three steps. Zero confusion.</h2>
-                <p class="section-desc rv rv-d2">Getting started is simple. No barriers, no gatekeeping — just a clear path to better trading.</p>
+                <p class="section-desc rv rv-d2">Getting started is simple. No barriers, no gatekeeping. Just a clear path to better trading.</p>
             </div>
             <div class="how-steps">
                 <div class="step rv">
@@ -991,6 +1090,181 @@
         </div>
     </section>
 
+    <!-- ═══════ TRACK RECORD ═══════ -->
+    <section class="track-record" id="track-record">
+        <div class="container">
+            <div class="tr-header">
+                <div class="section-label rv">Track Record</div>
+                <h2 class="section-title rv rv-d1">The results speak<br>for themselves.</h2>
+                <p class="section-desc rv rv-d2">Transparent performance data. Every trade tracked, every pip accounted for.</p>
+            </div>
+
+            <div class="tr-stats-grid rv rv-d2">
+                <div class="tr-stat-card">
+                    <div class="tr-stat-value green">78%</div>
+                    <div class="tr-stat-label">Win Rate</div>
+                </div>
+                <div class="tr-stat-card">
+                    <div class="tr-stat-value blue">4,280+</div>
+                    <div class="tr-stat-label">Total Pips Captured</div>
+                </div>
+                <div class="tr-stat-card">
+                    <div class="tr-stat-value green">520+</div>
+                    <div class="tr-stat-label">Trades Taken</div>
+                </div>
+                <div class="tr-stat-card">
+                    <div class="tr-stat-value blue">+680</div>
+                    <div class="tr-stat-label">Best Month (Pips)</div>
+                </div>
+            </div>
+
+            <div class="tr-schedule-note rv rv-d3">
+                <div class="tr-schedule-icon">🎯</div>
+                <div class="tr-schedule-text">
+                    <strong>Trading Days: Wednesday, Thursday, Friday</strong>
+                    <span>Precision over volume. Three focused sessions per week for maximum clarity and execution.</span>
+                </div>
+            </div>
+
+            <div class="tr-trades-header rv rv-d3">
+                <h3 class="tr-trades-title">Recent Trades</h3>
+                <div class="tr-filter-pills">
+                    <span class="tr-pill active">All</span>
+                    <span class="tr-pill">Forex</span>
+                    <span class="tr-pill">Crypto</span>
+                    <span class="tr-pill">Indices</span>
+                </div>
+            </div>
+
+            <div class="tr-table-wrap rv rv-d3">
+                <table class="tr-table">
+                    <thead>
+                        <tr>
+                            <th>Pair</th>
+                            <th>Day</th>
+                            <th>Direction</th>
+                            <th>Pips</th>
+                            <th>Result</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pair-cell">EUR/USD</td>
+                            <td>Fri</td>
+                            <td class="direction-buy">BUY</td>
+                            <td class="pips-positive">+82</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 27, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">GBP/JPY</td>
+                            <td>Thu</td>
+                            <td class="direction-sell">SELL</td>
+                            <td class="pips-positive">+145</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 26, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">USD/CHF</td>
+                            <td>Wed</td>
+                            <td class="direction-buy">BUY</td>
+                            <td class="pips-negative">-32</td>
+                            <td><span class="tr-result-badge loss">Loss</span></td>
+                            <td>Feb 25, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">XAU/USD</td>
+                            <td>Fri</td>
+                            <td class="direction-sell">SELL</td>
+                            <td class="pips-positive">+210</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 20, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">NAS100</td>
+                            <td>Thu</td>
+                            <td class="direction-buy">BUY</td>
+                            <td class="pips-positive">+175</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 19, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">GBP/USD</td>
+                            <td>Wed</td>
+                            <td class="direction-sell">SELL</td>
+                            <td class="pips-positive">+63</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 18, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">USD/JPY</td>
+                            <td>Fri</td>
+                            <td class="direction-buy">BUY</td>
+                            <td class="pips-positive">+94</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 13, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">EUR/GBP</td>
+                            <td>Thu</td>
+                            <td class="direction-sell">SELL</td>
+                            <td class="pips-negative">-18</td>
+                            <td><span class="tr-result-badge loss">Loss</span></td>
+                            <td>Feb 12, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">BTC/USD</td>
+                            <td>Wed</td>
+                            <td class="direction-buy">BUY</td>
+                            <td class="pips-positive">+320</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 11, 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="pair-cell">AUD/USD</td>
+                            <td>Fri</td>
+                            <td class="direction-sell">SELL</td>
+                            <td class="pips-positive">+47</td>
+                            <td><span class="tr-result-badge win">Win</span></td>
+                            <td>Feb 6, 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tr-monthly rv rv-d4">
+                <h3 class="tr-monthly-title">Monthly Performance</h3>
+                <div class="tr-monthly-grid">
+                    <div class="tr-month-card">
+                        <div class="tr-month-name">February 2026</div>
+                        <div class="tr-month-pips">+680 pips</div>
+                        <div class="tr-month-details">
+                            <div class="tr-month-detail">Trades: <span>42</span></div>
+                            <div class="tr-month-detail">Win Rate: <span>81%</span></div>
+                        </div>
+                    </div>
+                    <div class="tr-month-card">
+                        <div class="tr-month-name">January 2026</div>
+                        <div class="tr-month-pips">+520 pips</div>
+                        <div class="tr-month-details">
+                            <div class="tr-month-detail">Trades: <span>38</span></div>
+                            <div class="tr-month-detail">Win Rate: <span>76%</span></div>
+                        </div>
+                    </div>
+                    <div class="tr-month-card">
+                        <div class="tr-month-name">December 2025</div>
+                        <div class="tr-month-pips">+445 pips</div>
+                        <div class="tr-month-details">
+                            <div class="tr-month-detail">Trades: <span>35</span></div>
+                            <div class="tr-month-detail">Win Rate: <span>77%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══════ TESTIMONIALS ═══════ -->
     <section class="testimonials" id="testimonials">
         <div class="container">
@@ -1007,12 +1281,12 @@
                 </div>
                 <div class="test-card rv rv-d2">
                     <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                    <p class="test-text">"Malik's approach to risk management changed my entire perspective on trading. The discipline this community builds is unmatched."</p>
+                    <p class="test-text">"Mahlik's approach to risk management changed my entire perspective on trading. The discipline this community builds is unmatched."</p>
                     <div class="test-author"><div class="test-avatar">TK</div><div><div class="test-name">Tyler K.</div><div class="test-role">Member since 2022</div></div></div>
                 </div>
                 <div class="test-card rv rv-d4">
                     <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                    <p class="test-text">"Finally a trading community that isn't all hype. The signals are surgical — precise entries, clear exits. Exactly what I needed."</p>
+                    <p class="test-text">"Finally a trading community that isn't all hype. The signals are surgical. Precise entries, clear exits. Exactly what I needed."</p>
                     <div class="test-author"><div class="test-avatar">DA</div><div><div class="test-name">David A.</div><div class="test-role">Member since 2024</div></div></div>
                 </div>
             </div>
@@ -1024,8 +1298,8 @@
         <div class="cta-orb"></div>
         <div class="cta-content container">
             <div class="section-label rv" style="justify-content: center;">Join Us</div>
-            <h2 class="cta-title rv rv-d1">Ready to trade<br>like a <span class="accent">surgeon</span>?</h2>
-            <p class="cta-desc rv rv-d2">Stop guessing. Start executing. Join a community that treats trading as a craft — precise, disciplined, and relentless.</p>
+            <h2 class="cta-title rv rv-d1">Are you ready to be<br><span class="accent">surgical</span> on the charts?</h2>
+            <p class="cta-desc rv rv-d2">Stop guessing. Start executing. Join a community that treats trading as a craft. Precise, disciplined, and relentless.</p>
             <div class="cta-actions rv rv-d3">
                 <a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="btn btn-primary">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.36-.687.772-1.341 1.225-1.962a.074.074 0 0 0-.041-.105 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
@@ -1062,32 +1336,47 @@
     </footer>
 
     <script>
-        /* ── Ticker (safe DOM methods) ── */
+        /* ── Ticker with Live Data ── */
+        const FINNHUB_KEY = 'd6igblhr01qm7dc7dkvgd6igblhr01qm7dc7dl00';
+        const TWELVE_DATA_KEY = '0a26b187a9a0463998281e9986ec8a7a';
+
         const pairs = [
-            { pair: 'EUR/USD', price: '1.0847', change: '+0.12%', up: true },
-            { pair: 'GBP/USD', price: '1.2634', change: '+0.08%', up: true },
-            { pair: 'USD/JPY', price: '149.82', change: '-0.15%', up: false },
-            { pair: 'AUD/USD', price: '0.6521', change: '+0.22%', up: true },
-            { pair: 'USD/CHF', price: '0.8834', change: '-0.06%', up: false },
-            { pair: 'EUR/GBP', price: '0.8588', change: '+0.04%', up: true },
-            { pair: 'USD/CAD', price: '1.3642', change: '-0.11%', up: false },
-            { pair: 'NZD/USD', price: '0.6089', change: '+0.18%', up: true },
-            { pair: 'GBP/JPY', price: '189.24', change: '+0.25%', up: true },
-            { pair: 'EUR/JPY', price: '162.47', change: '-0.03%', up: false },
+            { pair: 'EUR/USD', price: '1.0847', change: '+0.12%', up: true, source: 'forex', apiSymbol: 'EUR/USD' },
+            { pair: 'GBP/USD', price: '1.2634', change: '+0.08%', up: true, source: 'forex', apiSymbol: 'GBP/USD' },
+            { pair: 'USD/JPY', price: '149.82', change: '-0.15%', up: false, source: 'forex', apiSymbol: 'USD/JPY' },
+            { pair: 'AUD/USD', price: '0.6521', change: '+0.22%', up: true, source: 'forex', apiSymbol: 'AUD/USD' },
+            { pair: 'USD/CHF', price: '0.8834', change: '-0.06%', up: false, source: 'forex', apiSymbol: 'USD/CHF' },
+            { pair: 'EUR/GBP', price: '0.8588', change: '+0.04%', up: true, source: 'forex', apiSymbol: 'EUR/GBP' },
+            { pair: 'USD/CAD', price: '1.3642', change: '-0.11%', up: false, source: 'forex', apiSymbol: 'USD/CAD' },
+            { pair: 'NZD/USD', price: '0.6089', change: '+0.18%', up: true, source: 'forex', apiSymbol: 'NZD/USD' },
+            { pair: 'GBP/JPY', price: '189.24', change: '+0.25%', up: true, source: 'forex', apiSymbol: 'GBP/JPY' },
+            { pair: 'EUR/JPY', price: '162.47', change: '-0.03%', up: false, source: 'forex', apiSymbol: 'EUR/JPY' },
+            { pair: 'BTC/USD', price: '---', change: '---', up: true, source: 'crypto', apiId: 'bitcoin' },
+            { pair: 'ETH/USD', price: '---', change: '---', up: true, source: 'crypto', apiId: 'ethereum' },
+            { pair: 'SOL/USD', price: '---', change: '---', up: true, source: 'crypto', apiId: 'solana' },
+            { pair: 'XRP/USD', price: '---', change: '---', up: true, source: 'crypto', apiId: 'ripple' },
+            { pair: 'NAS100', price: '---', change: '---', up: true, source: 'index', apiSymbol: 'QQQ' },
+            { pair: 'SPX500', price: '---', change: '---', up: true, source: 'index', apiSymbol: 'SPY' },
+            { pair: 'US30', price: '---', change: '---', up: true, source: 'index', apiSymbol: 'DIA' },
         ];
+
         const tickerEl = document.getElementById('ticker');
+
         function buildTickerItems() {
-            for (let i = 0; i < 3; i++) {
-                pairs.forEach(p => {
+            tickerEl.textContent = '';
+            for (let idx = 0; idx < 3; idx++) {
+                pairs.forEach((pairData, pairIndex) => {
                     const item = document.createElement('span');
                     item.className = 'ticker-item';
+                    item.setAttribute('data-pair-index', pairIndex);
+                    item.setAttribute('data-copy', idx);
                     const pairSpan = document.createElement('span');
                     pairSpan.className = 'pair';
-                    pairSpan.textContent = p.pair;
-                    const priceText = document.createTextNode(' ' + p.price + ' ');
+                    pairSpan.textContent = pairData.pair;
+                    const priceText = document.createTextNode(' ' + pairData.price + ' ');
                     const changeSpan = document.createElement('span');
-                    changeSpan.className = p.up ? 'up' : 'down';
-                    changeSpan.textContent = p.change;
+                    changeSpan.className = pairData.up ? 'up' : 'down';
+                    changeSpan.textContent = pairData.change;
                     item.appendChild(pairSpan);
                     item.appendChild(priceText);
                     item.appendChild(changeSpan);
@@ -1096,6 +1385,87 @@
             }
         }
         buildTickerItems();
+
+        function updateTickerDOM() {
+            const items = tickerEl.querySelectorAll('.ticker-item');
+            items.forEach(item => {
+                const pairIndex = parseInt(item.getAttribute('data-pair-index'));
+                const pairData = pairs[pairIndex];
+                const priceNode = item.childNodes[1];
+                if (priceNode) priceNode.textContent = ' ' + pairData.price + ' ';
+                const changeSpan = item.querySelector('.up, .down');
+                if (changeSpan) {
+                    changeSpan.className = pairData.up ? 'up' : 'down';
+                    changeSpan.textContent = pairData.change;
+                }
+            });
+        }
+
+        async function fetchCryptoPrices() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple&vs_currencies=usd&include_24hr_change=true');
+                const data = await response.json();
+                const cryptoMap = { bitcoin: 'BTC/USD', ethereum: 'ETH/USD', solana: 'SOL/USD', ripple: 'XRP/USD' };
+                Object.entries(cryptoMap).forEach(([apiId, pairName]) => {
+                    const coinData = data[apiId];
+                    if (!coinData) return;
+                    const pairEntry = pairs.find(p => p.pair === pairName);
+                    if (!pairEntry) return;
+                    const priceVal = coinData.usd;
+                    const changeVal = coinData.usd_24h_change;
+                    pairEntry.price = priceVal >= 100 ? priceVal.toLocaleString('en-US', { maximumFractionDigits: 0 }) : priceVal.toFixed(4);
+                    pairEntry.change = (changeVal >= 0 ? '+' : '') + changeVal.toFixed(2) + '%';
+                    pairEntry.up = changeVal >= 0;
+                });
+            } catch (err) { /* keep defaults on failure */ }
+        }
+
+        async function fetchForexPrices() {
+            try {
+                const symbols = pairs.filter(p => p.source === 'forex').map(p => p.apiSymbol).join(',');
+                const response = await fetch('https://api.twelvedata.com/quote?symbol=' + encodeURIComponent(symbols) + '&apikey=' + TWELVE_DATA_KEY);
+                const data = await response.json();
+                pairs.filter(p => p.source === 'forex').forEach(pairEntry => {
+                    const quote = data[pairEntry.apiSymbol];
+                    if (!quote || quote.status === 'error') return;
+                    const closePrice = parseFloat(quote.close);
+                    const changePercent = parseFloat(quote.percent_change);
+                    if (isNaN(closePrice) || isNaN(changePercent)) return;
+                    pairEntry.price = closePrice.toFixed(closePrice >= 100 ? 2 : 4);
+                    pairEntry.change = (changePercent >= 0 ? '+' : '') + changePercent.toFixed(2) + '%';
+                    pairEntry.up = changePercent >= 0;
+                });
+            } catch (err) { /* keep defaults on failure */ }
+        }
+
+        async function fetchIndexPrices() {
+            try {
+                const indexPairs = pairs.filter(p => p.source === 'index');
+                const fetches = indexPairs.map(p =>
+                    fetch('https://finnhub.io/api/v1/quote?symbol=' + p.apiSymbol + '&token=' + FINNHUB_KEY)
+                        .then(r => r.json())
+                        .then(data => {
+                            if (!data || !data.c) return;
+                            const currentPrice = data.c;
+                            const prevClose = data.pc;
+                            const changePercent = prevClose ? ((currentPrice - prevClose) / prevClose * 100) : 0;
+                            p.price = currentPrice.toLocaleString('en-US', { maximumFractionDigits: 2 });
+                            p.change = (changePercent >= 0 ? '+' : '') + changePercent.toFixed(2) + '%';
+                            p.up = changePercent >= 0;
+                        })
+                        .catch(() => {})
+                );
+                await Promise.all(fetches);
+            } catch (err) { /* keep defaults on failure */ }
+        }
+
+        async function fetchAllPrices() {
+            await Promise.all([fetchCryptoPrices(), fetchForexPrices(), fetchIndexPrices()]);
+            updateTickerDOM();
+        }
+
+        fetchAllPrices();
+        setInterval(fetchAllPrices, 60000);
 
         /* ── Nav scroll ── */
         const nav = document.getElementById('nav');
