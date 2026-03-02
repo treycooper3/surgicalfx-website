@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>ΣURGICAL FX | Trade with Surgical Precision</title>
+    <meta name="description" content="ΣURGICAL FX — Premium forex trading signals and education. Master the markets with surgical precision. Join our Discord community for daily setups, expert analysis, and trading education.">
+    <meta name="keywords" content="forex trading, forex signals, trading education, surgical fx, forex community, trading discord">
+    <meta property="og:title" content="ΣURGICAL FX | Trade with Surgical Precision">
+    <meta property="og:description" content="Premium forex trading signals and education. Master the markets with surgical precision.">
+    <meta property="og:image" content="assets/logo.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-void: #060810;
+            --bg-primary: #0A0C14;
+            --bg-card: rgba(14, 17, 30, 0.6);
+            --bg-card-solid: #0E111E;
+            --bg-card-hover: rgba(18, 22, 38, 0.7);
+            --bg-glass: rgba(12, 15, 28, 0.45);
+            --bg-nav: rgba(6, 8, 16, 0.88);
+            --blue-electric: #2563EB;
+            --blue-glow: #3B82F6;
+            --blue-deep: #1E40AF;
+            --blue-accent: #60A5FA;
+            --blue-subtle: rgba(37, 99, 235, 0.07);
+            --green-candle: #22C55E;
+            --green-bright: #4ADE80;
+            --green-glow: rgba(34, 197, 94, 0.12);
+            --red-candle: #EF4444;
+            --red-bright: #F87171;
+            --red-glow: rgba(239, 68, 68, 0.12);
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --text-muted: #475569;
+            --border: rgba(37, 99, 235, 0.10);
+            --border-glass: rgba(255, 255, 255, 0.06);
+            --border-glow: rgba(37, 99, 235, 0.20);
+            --glass-blur: blur(24px) saturate(1.5);
+            --container: 1200px;
+            --nav-h: 72px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background: var(--bg-void);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+        .mono { font-family: 'Space Mono', monospace; }
+
+        /* ── Reveal Animations ── */
+        .rv { opacity: 0; transform: translateY(36px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .rv.vis { opacity: 1; transform: translateY(0); }
+        .rv-d1 { transition-delay: 0.1s; } .rv-d2 { transition-delay: 0.2s; }
+        .rv-d3 { transition-delay: 0.3s; } .rv-d4 { transition-delay: 0.4s; }
+        .rv-d5 { transition-delay: 0.5s; }
+
+        /* ═══════════════════════════════════════
+           CURRENCY TICKER MARQUEE
+           ═══════════════════════════════════════ */
+        .ticker-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 36px;
+            background: rgba(6, 8, 16, 0.95);
+            border-bottom: 1px solid var(--border);
+            z-index: 1001;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .ticker {
+            display: flex;
+            animation: tickerScroll 40s linear infinite;
+            white-space: nowrap;
+        }
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 28px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+        .ticker-item .pair { color: var(--text-secondary); font-weight: 700; }
+        .ticker-item .up { color: var(--green-candle); }
+        .ticker-item .down { color: var(--red-candle); }
+        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ═══════════════════════════════════════
+           NAVIGATION
+           ═══════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 36px;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            background: var(--bg-nav);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .nav.scrolled { box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4); }
+        .nav-inner {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border-glass);
+        }
+        .nav-brand-text {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .nav-brand-text .fx { color: var(--blue-electric); }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--blue-electric);
+            transition: width 0.3s;
+        }
+        .nav-link:hover { color: var(--text-primary); }
+        .nav-link:hover::after { width: 100%; }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: var(--blue-electric);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.25);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .nav-cta:hover {
+            background: #3B82F6;
+            box-shadow: 0 0 36px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+        .nav-cta svg { width: 16px; height: 16px; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 8, 16, 0.98);
+            backdrop-filter: blur(24px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .mobile-menu.active { display: flex; opacity: 1; }
+        .mobile-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--blue-electric); }
+
+        /* ═══════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: calc(var(--nav-h) + 76px) 24px 80px;
+        }
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 10%, transparent 65%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 10%, transparent 65%);
+            animation: gridPulse 8s ease-in-out infinite;
+        }
+        @keyframes gridPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            animation: orbFloat 10s ease-in-out infinite;
+        }
+        .hero-orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+            top: 10%; left: 50%; transform: translate(-50%, 0);
+        }
+        .hero-orb-2 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
+            bottom: 20%; left: 20%; animation-delay: -4s;
+        }
+        .hero-orb-3 {
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.05) 0%, transparent 70%);
+            top: 30%; right: 15%; animation-delay: -7s;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.08); }
+        }
+        .hero-chart {
+            position: absolute;
+            bottom: 8%; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1000px; height: 200px; opacity: 0.08;
+        }
+        .hero-chart .chart-line {
+            fill: none; stroke: var(--blue-electric); stroke-width: 2;
+            stroke-dasharray: 2000; stroke-dashoffset: 2000;
+            animation: drawChart 4s ease-out forwards;
+        }
+        .hero-chart .chart-area {
+            fill: url(#chartGradient); opacity: 0;
+            animation: fadeArea 2s ease-out 2s forwards;
+        }
+        @keyframes drawChart { to { stroke-dashoffset: 0; } }
+        @keyframes fadeArea { to { opacity: 0.5; } }
+        .hero-candles { position: absolute; inset: 0; overflow: hidden; opacity: 0.10; }
+        .candle {
+            position: absolute; width: 4px; border-radius: 2px;
+            animation: candleFloat 7s ease-in-out infinite;
+        }
+        .candle::before {
+            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+            width: 1px; height: 120%; top: -10%; background: inherit; opacity: 0.5;
+        }
+        .candle.g { background: var(--green-candle); box-shadow: 0 0 12px rgba(34, 197, 94, 0.3); }
+        .candle.r { background: var(--red-candle); box-shadow: 0 0 12px rgba(239, 68, 68, 0.3); }
+        @keyframes candleFloat {
+            0%, 100% { transform: translateY(0); opacity: 0.3; }
+            50% { transform: translateY(-25px); opacity: 1; }
+        }
+        .hero-content {
+            position: relative; z-index: 2; text-align: center; max-width: 880px;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 22px; background: var(--bg-glass);
+            backdrop-filter: var(--glass-blur); border: 1px solid var(--border-glass);
+            border-radius: 100px; font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue-accent);
+            margin-bottom: 36px;
+        }
+        .hero-badge .pulse {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--green-candle); animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 6px var(--green-candle);
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .hero-title {
+            font-size: clamp(3rem, 7.5vw, 5.8rem); font-weight: 900;
+            line-height: 1.02; letter-spacing: -3px; margin-bottom: 28px;
+        }
+        .hero-title .line1 {
+            display: block;
+            background: linear-gradient(135deg, #FFFFFF 20%, #CBD5E1 80%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-title .line2 {
+            display: block;
+            background: linear-gradient(135deg, var(--blue-electric) 0%, var(--blue-accent) 60%, var(--green-candle) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-secondary);
+            max-width: 560px; margin: 0 auto 48px; font-weight: 300; line-height: 1.8;
+        }
+        .hero-actions {
+            display: flex; align-items: center; justify-content: center;
+            gap: 16px; flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 36px; font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; text-decoration: none; border-radius: 10px;
+            cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none; position: relative;
+        }
+        .btn svg { width: 18px; height: 18px; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-electric) 0%, var(--blue-deep) 100%);
+            color: #fff;
+            box-shadow: 0 0 28px rgba(37, 99, 235, 0.3), 0 4px 16px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .btn-primary::before {
+            content: ''; position: absolute; inset: -1px; border-radius: 11px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), transparent 50%);
+            z-index: -1; opacity: 0; transition: opacity 0.3s;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 48px rgba(37, 99, 235, 0.45), 0 8px 32px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .btn-primary:hover::before { opacity: 1; }
+        .btn-glass {
+            background: var(--bg-glass); backdrop-filter: var(--glass-blur);
+            color: var(--text-primary); border: 1px solid var(--border-glass);
+        }
+        .btn-glass:hover {
+            border-color: var(--border-glow); background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .scroll-hint {
+            position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            color: var(--text-muted); font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .scroll-line { width: 1px; height: 44px; position: relative; overflow: hidden; }
+        .scroll-line::after {
+            content: ''; position: absolute; top: -100%; left: 0;
+            width: 1px; height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--blue-electric));
+            animation: scrollDrop 2s ease-in-out infinite;
+        }
+        @keyframes scrollDrop { 0% { top: -100%; } 100% { top: 100%; } }
+
+        /* ═══════════════════════════════════════
+           SHARED SECTION
+           ═══════════════════════════════════════ */
+        section { padding: 120px 0; position: relative; }
+        .section-label {
+            font-family: 'Space Mono', monospace; font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 4px; text-transform: uppercase; color: var(--blue-electric);
+            margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+        }
+        .section-label::before { content: ''; width: 20px; height: 1px; background: var(--blue-electric); }
+        .section-title {
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800;
+            letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 20px;
+        }
+        .section-desc {
+            font-size: 1.05rem; color: var(--text-secondary); max-width: 540px;
+            font-weight: 300; line-height: 1.75;
+        }
+
+        /* ═══════════════════════════════════════
+           ABOUT
+           ═══════════════════════════════════════ */
+        .about { background: var(--bg-primary); position: relative; overflow: hidden; }
+        .about-orb {
+            position: absolute; width: 400px; height: 400px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+            top: -100px; right: -100px; filter: blur(60px); pointer-events: none;
+        }
+        .about-inner {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+        }
+        .about-visual { position: relative; display: flex; justify-content: center; }
+        .about-frame {
+            width: 340px; height: 340px; border-radius: 50%;
+            background: var(--bg-glass); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .about-frame::before {
+            content: ''; position: absolute; inset: -2px; border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--blue-electric), transparent 25%, transparent 75%, var(--blue-electric));
+            z-index: -1; animation: frameRot 12s linear infinite;
+        }
+        @keyframes frameRot { to { transform: rotate(360deg); } }
+        .about-sigma {
+            font-family: 'Space Mono', monospace; font-size: 5rem;
+            background: linear-gradient(135deg, var(--blue-electric), var(--blue-accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            opacity: 0.25;
+        }
+        .about-ring {
+            position: absolute; width: 410px; height: 410px; border-radius: 50%;
+            border: 1px dashed rgba(37, 99, 235, 0.12); animation: ringRot 40s linear infinite;
+        }
+        @keyframes ringRot { to { transform: rotate(360deg); } }
+        .about-ring .dot {
+            position: absolute; width: 8px; height: 8px; border-radius: 50%;
+            background: var(--blue-electric); box-shadow: 0 0 16px var(--blue-electric);
+        }
+        .about-ring .dot:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -50%); }
+        .about-ring .dot:nth-child(2) { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+        .about-ring .dot:nth-child(3) { top: 50%; right: 0; transform: translate(50%, -50%); }
+        .about-float-card {
+            position: absolute; background: var(--bg-glass); backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass); border-radius: 12px;
+            padding: 14px 18px; display: flex; align-items: center; gap: 10px;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+        .about-float-card .fc-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+        }
+        .about-float-card .fc-text { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.5px; }
+        .about-float-card .fc-sub { font-size: 0.65rem; color: var(--text-muted); font-weight: 400; }
+        .afc-1 { top: 30px; right: -10px; animation-delay: 0s; }
+        .afc-1 .fc-icon { background: var(--green-glow); }
+        .afc-2 { bottom: 40px; left: -20px; animation-delay: -2s; }
+        .afc-2 .fc-icon { background: var(--blue-subtle); }
+        .afc-3 { bottom: -10px; right: 30px; animation-delay: -4s; }
+        .afc-3 .fc-icon { background: var(--red-glow); }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .about-text .section-desc { margin-bottom: 32px; }
+        .about-traits { display: flex; gap: 20px; flex-wrap: wrap; }
+        .trait {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--text-secondary);
+            padding: 8px 16px; background: var(--bg-glass);
+            border: 1px solid var(--border-glass); border-radius: 8px;
+            backdrop-filter: blur(12px);
+        }
+        .trait-dot { width: 5px; height: 5px; border-radius: 50%; }
+        .trait-dot.b { background: var(--blue-electric); box-shadow: 0 0 8px var(--blue-electric); }
+        .trait-dot.g { background: var(--green-candle); box-shadow: 0 0 8px var(--green-candle); }
+        .trait-dot.r { background: var(--red-candle); box-shadow: 0 0 8px var(--red-candle); }
+
+        /* ═══════════════════════════════════════
+           SERVICES
+           ═══════════════════════════════════════ */
+        .services { background: var(--bg-void); position: relative; overflow: hidden; }
+        .services-orb {
+            position: absolute; width: 350px; height: 350px; border-radius: 50%;
+            filter: blur(80px); pointer-events: none;
+        }
+        .services-orb-1 {
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
+            top: 20%; left: -5%;
+        }
+        .services-orb-2 {
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+            bottom: 10%; right: -5%;
+        }
+        .services-header { text-align: center; margin-bottom: 64px; }
+        .services-header .section-label { justify-content: center; }
+        .services-header .section-desc { margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .svc-card {
+            background: var(--bg-glass); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass); border-radius: 20px;
+            padding: 48px 40px; position: relative; overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d; perspective: 1000px;
+        }
+        .svc-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+        }
+        .svc-card::after {
+            content: ''; position: absolute; inset: 0; border-radius: 20px;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(37, 99, 235, 0.06) 0%, transparent 50%);
+            pointer-events: none; opacity: 0; transition: opacity 0.4s;
+        }
+        .svc-card:hover { border-color: var(--border-glow); }
+        .svc-card:hover::after { opacity: 1; }
+        .svc-card.signals::before { background: linear-gradient(90deg, transparent, var(--green-candle), var(--red-candle), transparent); }
+        .svc-card.education::before { background: linear-gradient(90deg, transparent, var(--blue-electric), var(--blue-accent), transparent); }
+        .svc-icon {
+            width: 60px; height: 60px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 28px; position: relative;
+        }
+        .svc-card.signals .svc-icon { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.12); }
+        .svc-card.education .svc-icon { background: var(--blue-subtle); border: 1px solid var(--border); }
+        .svc-icon svg { width: 26px; height: 26px; }
+        .svc-card.signals .svc-icon svg { color: var(--green-candle); }
+        .svc-card.education .svc-icon svg { color: var(--blue-electric); }
+        .svc-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.5px; }
+        .svc-desc { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px; font-weight: 300; }
+        .svc-features { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .svc-features li { display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: var(--text-secondary); font-weight: 400; }
+        .fc { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .svc-card.signals .fc { background: var(--green-glow); color: var(--green-candle); }
+        .svc-card.education .fc { background: var(--blue-subtle); color: var(--blue-electric); }
+        .fc svg { width: 10px; height: 10px; }
+        .check-svg { fill: none; stroke: currentColor; stroke-width: 3; }
+
+        /* ═══════════════════════════════════════
+           STATS
+           ═══════════════════════════════════════ */
+        .stats { background: var(--bg-primary); padding: 80px 0; position: relative; }
+        .stats::before, .stats::after {
+            content: ''; position: absolute; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .stats::before { top: 0; } .stats::after { bottom: 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .stat {
+            text-align: center; padding: 28px 16px;
+            background: var(--bg-glass); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass); border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .stat:hover { border-color: var(--border-glow); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); }
+        .stat-num {
+            font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -2px;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--blue-accent) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .stat-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .stat-ring { width: 48px; height: 48px; margin: 0 auto 12px; position: relative; }
+        .stat-ring svg { width: 48px; height: 48px; transform: rotate(-90deg); }
+        .stat-ring circle { fill: none; stroke-width: 3; stroke-linecap: round; }
+        .stat-ring .ring-bg { stroke: rgba(37, 99, 235, 0.08); }
+        .stat-ring .ring-fill { stroke: var(--blue-electric); stroke-dasharray: 126; stroke-dashoffset: 126; transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .stat.vis .ring-fill { stroke-dashoffset: var(--ring-offset, 0); }
+
+        /* ═══════════════════════════════════════
+           HOW IT WORKS
+           ═══════════════════════════════════════ */
+        .how { background: var(--bg-void); position: relative; overflow: hidden; }
+        .how-header { text-align: center; margin-bottom: 80px; }
+        .how-header .section-label { justify-content: center; }
+        .how-header .section-desc { margin: 0 auto; }
+        .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; position: relative; }
+        .how-steps::before {
+            content: ''; position: absolute; top: 52px;
+            left: calc(16.66% + 30px); right: calc(16.66% + 30px);
+            height: 1px; background: linear-gradient(90deg, var(--border), var(--blue-electric), var(--border));
+        }
+        .step {
+            text-align: center; position: relative; z-index: 1;
+            padding: 32px 20px; background: var(--bg-glass);
+            backdrop-filter: blur(12px); border: 1px solid var(--border-glass);
+            border-radius: 20px; transition: all 0.4s;
+        }
+        .step:hover { border-color: var(--border-glow); transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3); }
+        .step-icon {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: var(--bg-card-solid); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px; transition: all 0.3s;
+        }
+        .step:hover .step-icon { border-color: var(--blue-electric); box-shadow: 0 0 28px rgba(37, 99, 235, 0.25); }
+        .step-icon svg { width: 30px; height: 30px; color: var(--blue-electric); }
+        .step-num { font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--blue-electric); margin-bottom: 10px; }
+        .step-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+        .step-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; font-weight: 300; }
+
+        /* ═══════════════════════════════════════
+           TESTIMONIALS
+           ═══════════════════════════════════════ */
+        .testimonials { background: var(--bg-primary); position: relative; overflow: hidden; }
+        .test-header { text-align: center; margin-bottom: 64px; }
+        .test-header .section-label { justify-content: center; }
+        .test-header .section-desc { margin: 0 auto; }
+        .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .test-card {
+            background: var(--bg-glass); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass); border-radius: 20px;
+            padding: 36px 28px; transition: all 0.4s; position: relative;
+        }
+        .test-card:hover { border-color: var(--border-glow); transform: translateY(-4px); }
+        .test-card::before {
+            content: '\201C'; position: absolute; top: 20px; right: 24px;
+            font-size: 4rem; line-height: 1; color: var(--blue-electric);
+            opacity: 0.08; font-family: Georgia, serif;
+        }
+        .test-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+        .test-stars svg { width: 14px; height: 14px; fill: var(--blue-electric); }
+        .test-text { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; font-weight: 300; margin-bottom: 20px; font-style: italic; }
+        .test-author { display: flex; align-items: center; gap: 12px; }
+        .test-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue-electric), var(--blue-deep));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: 700; color: #fff;
+        }
+        .test-name { font-size: 0.82rem; font-weight: 600; }
+        .test-role { font-size: 0.7rem; color: var(--text-muted); }
+
+        /* ═══════════════════════════════════════
+           FINAL CTA
+           ═══════════════════════════════════════ */
+        .cta-section {
+            padding: 160px 0; text-align: center; position: relative;
+            overflow: hidden; background: var(--bg-void);
+        }
+        .cta-orb {
+            position: absolute; width: 600px; height: 600px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            pointer-events: none; filter: blur(40px);
+        }
+        .cta-content { position: relative; z-index: 2; }
+        .cta-title {
+            font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900;
+            letter-spacing: -2px; line-height: 1.08; margin-bottom: 24px;
+        }
+        .cta-title .accent {
+            background: linear-gradient(135deg, var(--blue-electric), var(--blue-accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .cta-desc {
+            font-size: 1.1rem; color: var(--text-secondary); max-width: 480px;
+            margin: 0 auto 44px; font-weight: 300; line-height: 1.75;
+        }
+        .cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════ */
+        .footer { background: var(--bg-primary); border-top: 1px solid var(--border-glass); padding: 48px 0 28px; }
+        .footer-inner { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+        .footer-brand { display: flex; align-items: center; gap: 10px; }
+        .footer-logo { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        .footer-brand-text { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .footer-socials { display: flex; gap: 10px; }
+        .footer-social {
+            width: 38px; height: 38px; border-radius: 10px;
+            background: var(--bg-glass); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary); text-decoration: none; transition: all 0.3s;
+        }
+        .footer-social:hover { border-color: var(--blue-electric); color: var(--blue-electric); background: var(--blue-subtle); }
+        .footer-social svg { width: 16px; height: 16px; }
+        .footer-disclaimer {
+            font-size: 0.72rem; color: var(--text-muted); line-height: 1.8;
+            padding-top: 20px; border-top: 1px solid var(--border-glass);
+            text-align: center; max-width: 680px; margin: 0 auto;
+        }
+        .footer-copyright { text-align: center; font-size: 0.72rem; color: var(--text-muted); margin-top: 12px; }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .about-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+            .about-visual { order: -1; }
+            .about-traits { justify-content: center; }
+            .about-text .section-label { justify-content: center; }
+            .about-text .section-desc { margin: 0 auto 32px; }
+            .services-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+            .test-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+            .how-steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; gap: 20px; }
+            .how-steps::before { display: none; }
+        }
+        @media (max-width: 768px) {
+            section { padding: 80px 0; }
+            .ticker-wrap { height: 32px; }
+            .ticker-item { font-size: 0.62rem; padding: 0 20px; }
+            .nav { top: 32px; }
+            .hero { padding-top: calc(var(--nav-h) + 72px); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-frame { width: 260px; height: 260px; }
+            .about-ring { width: 320px; height: 320px; }
+            .about-float-card { display: none; }
+            .svc-card { padding: 32px 24px; }
+            .footer-inner { flex-direction: column; gap: 20px; }
+            .cta-section { padding: 100px 0; }
+        }
+        @media (max-width: 480px) {
+            .hero-actions, .cta-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn, .cta-actions .btn { width: 100%; justify-content: center; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .about-traits { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════ CURRENCY TICKER ═══════ -->
+    <div class="ticker-wrap">
+        <div class="ticker" id="ticker"></div>
+    </div>
+
+    <!-- ═══════ NAVIGATION ═══════ -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <img src="assets/logo.jpg" alt="Surgical FX Logo" class="nav-logo">
+                <span class="nav-brand-text"><span class="mono">Σ</span>urgical <span class="fx">FX</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#how" class="nav-link">How It Works</a></li>
+                <li><a href="#testimonials" class="nav-link">Community</a></li>
+                <li><a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="nav-cta">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
+                    Join Discord
+                </a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" class="ml">About</a>
+        <a href="#services" class="ml">Services</a>
+        <a href="#how" class="ml">How It Works</a>
+        <a href="#testimonials" class="ml">Community</a>
+        <a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="ml" style="color: var(--blue-electric);">Join Discord</a>
+        <a href="https://www.instagram.com/surgicalfx_" target="_blank" rel="noopener" class="ml">Instagram</a>
+    </div>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero" id="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+        <div class="hero-candles" id="heroCandles"></div>
+        <svg class="hero-chart" viewBox="0 0 1000 200" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2563EB" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+            <path class="chart-area" d="M0,160 L50,145 L100,150 L150,120 L200,130 L250,90 L300,100 L350,60 L400,80 L450,40 L500,65 L550,35 L600,55 L650,25 L700,45 L750,30 L800,50 L850,20 L900,40 L950,15 L1000,30 L1000,200 L0,200 Z"/>
+            <path class="chart-line" d="M0,160 L50,145 L100,150 L150,120 L200,130 L250,90 L300,100 L350,60 L400,80 L450,40 L500,65 L550,35 L600,55 L650,25 L700,45 L750,30 L800,50 L850,20 L900,40 L950,15 L1000,30"/>
+        </svg>
+
+        <div class="hero-content">
+            <div class="hero-badge rv"><span class="pulse"></span> Live Signals Active</div>
+            <h1 class="hero-title rv rv-d1">
+                <span class="line1">Trade with</span>
+                <span class="line2">Surgical Precision</span>
+            </h1>
+            <p class="hero-sub rv rv-d2">Master the forex markets with expert signals, proven strategies, and a community built on discipline. No noise — just precise, calculated moves.</p>
+            <div class="hero-actions rv rv-d3">
+                <a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
+                    Join the Discord
+                </a>
+                <a href="https://www.instagram.com/surgicalfx_" target="_blank" rel="noopener" class="btn btn-glass">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Follow on Instagram
+                </a>
+            </div>
+        </div>
+        <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+    </section>
+
+    <!-- ═══════ ABOUT ═══════ -->
+    <section class="about" id="about">
+        <div class="about-orb"></div>
+        <div class="container">
+            <div class="about-inner">
+                <div class="about-visual rv">
+                    <div class="about-frame"><span class="about-sigma">Σ</span></div>
+                    <div class="about-ring"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                    <div class="about-float-card afc-1">
+                        <div class="fc-icon">📈</div>
+                        <div><div class="fc-text" style="color: var(--green-candle);">Trading Since 2019</div><div class="fc-sub">7+ Years Experience</div></div>
+                    </div>
+                    <div class="about-float-card afc-2">
+                        <div class="fc-icon">🎯</div>
+                        <div><div class="fc-text" style="color: var(--blue-accent);">Okinawa, Japan</div><div class="fc-sub">Global Markets</div></div>
+                    </div>
+                    <div class="about-float-card afc-3">
+                        <div class="fc-icon">⚡</div>
+                        <div><div class="fc-text" style="color: var(--red-bright);">Est. 2021</div><div class="fc-sub">ΣURGICAL FX</div></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <div class="section-label rv">About</div>
+                    <h2 class="section-title rv rv-d1">Precision is<br>not optional.</h2>
+                    <p class="section-desc rv rv-d2">Founded by Malik, <span class="mono">Σ</span>urgical FX was born from a simple belief: trading isn't gambling — it's a discipline. Trading since 2019 and operating from Okinawa, Japan, Malik brings a surgeon's mindset to the forex markets — every trade planned, every risk calculated, every move intentional.</p>
+                    <p class="section-desc rv rv-d3" style="margin-top: 16px; margin-bottom: 32px;">What started as a personal trading journey evolved into a full business in 2021 and grew into a community of traders who refuse to leave their results to chance. We don't chase — we execute.</p>
+                    <div class="about-traits rv rv-d4">
+                        <span class="trait"><span class="trait-dot b"></span> Discipline</span>
+                        <span class="trait"><span class="trait-dot g"></span> Precision</span>
+                        <span class="trait"><span class="trait-dot r"></span> Execution</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ SERVICES ═══════ -->
+    <section class="services" id="services">
+        <div class="services-orb services-orb-1"></div>
+        <div class="services-orb services-orb-2"></div>
+        <div class="container">
+            <div class="services-header">
+                <div class="section-label rv">Services</div>
+                <h2 class="section-title rv rv-d1">What we deliver.</h2>
+                <p class="section-desc rv rv-d2">Two pillars of our approach — precise signals and deep education. You get both.</p>
+            </div>
+            <div class="services-grid">
+                <div class="svc-card signals rv" data-tilt>
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 20V14M6 10V4M12 20V12M12 8V4M18 20V16M18 12V4"/>
+                            <line x1="4" y1="14" x2="8" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="16" y1="16" x2="20" y2="16"/>
+                        </svg>
+                    </div>
+                    <h3 class="svc-title">Forex Signals</h3>
+                    <p class="svc-desc">Precision trade setups delivered daily. Every signal comes with clear entries, stop-losses, and take-profit levels — no guesswork, just execution.</p>
+                    <ul class="svc-features">
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Daily trade setups with clear entries</li>
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Stop-loss & take-profit levels</li>
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Risk management guidance</li>
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Real-time market updates</li>
+                    </ul>
+                </div>
+                <div class="svc-card education rv rv-d2" data-tilt>
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="svc-title">Education</h3>
+                    <p class="svc-desc">Learn to read the markets like a surgeon reads an X-ray. Deep analysis breakdowns, trading psychology, and the frameworks behind every move.</p>
+                    <ul class="svc-features">
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Market analysis breakdowns</li>
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Chart reading fundamentals</li>
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Trading psychology & mindset</li>
+                        <li><span class="fc"><svg class="check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Live Q&A sessions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STATS ═══════ -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat rv">
+                    <div class="stat-ring"><svg viewBox="0 0 48 48"><circle class="ring-bg" cx="24" cy="24" r="20"/><circle class="ring-fill" cx="24" cy="24" r="20" style="--ring-offset: 25;"/></svg></div>
+                    <div class="stat-num" data-target="500">0</div>
+                    <div class="stat-label">Community Members</div>
+                </div>
+                <div class="stat rv rv-d1">
+                    <div class="stat-ring"><svg viewBox="0 0 48 48"><circle class="ring-bg" cx="24" cy="24" r="20"/><circle class="ring-fill" cx="24" cy="24" r="20" style="--ring-offset: 0;"/></svg></div>
+                    <div class="stat-num">Daily</div>
+                    <div class="stat-label">Signal Frequency</div>
+                </div>
+                <div class="stat rv rv-d2">
+                    <div class="stat-ring"><svg viewBox="0 0 48 48"><circle class="ring-bg" cx="24" cy="24" r="20"/><circle class="ring-fill" cx="24" cy="24" r="20" style="--ring-offset: 0;"/></svg></div>
+                    <div class="stat-num">24/7</div>
+                    <div class="stat-label">Active Community</div>
+                </div>
+                <div class="stat rv rv-d3">
+                    <div class="stat-ring"><svg viewBox="0 0 48 48"><circle class="ring-bg" cx="24" cy="24" r="20"/><circle class="ring-fill" cx="24" cy="24" r="20" style="--ring-offset: 15;"/></svg></div>
+                    <div class="stat-num" data-target="7">0</div>
+                    <div class="stat-label">Years Trading</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ HOW IT WORKS ═══════ -->
+    <section class="how" id="how">
+        <div class="container">
+            <div class="how-header">
+                <div class="section-label rv">How It Works</div>
+                <h2 class="section-title rv rv-d1">Three steps. Zero confusion.</h2>
+                <p class="section-desc rv rv-d2">Getting started is simple. No barriers, no gatekeeping — just a clear path to better trading.</p>
+            </div>
+            <div class="how-steps">
+                <div class="step rv">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.36-.687.772-1.341 1.225-1.962a.074.074 0 0 0-.041-.105 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
+                    </div>
+                    <div class="step-num">Step 01</div>
+                    <h3 class="step-title">Join the Discord</h3>
+                    <p class="step-desc">Enter the community. Get access to channels, signals, and fellow traders who share the same mindset.</p>
+                </div>
+                <div class="step rv rv-d2">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <div class="step-num">Step 02</div>
+                    <h3 class="step-title">Get Signals & Learn</h3>
+                    <p class="step-desc">Receive daily trade setups with full analysis. Study the breakdowns. Understand the why behind every move.</p>
+                </div>
+                <div class="step rv rv-d4">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                    <div class="step-num">Step 03</div>
+                    <h3 class="step-title">Execute with Precision</h3>
+                    <p class="step-desc">Apply what you learn. Trade with confidence. Build discipline. The surgical approach becomes second nature.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ TESTIMONIALS ═══════ -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="test-header">
+                <div class="section-label rv">Community</div>
+                <h2 class="section-title rv rv-d1">What traders are saying.</h2>
+                <p class="section-desc rv rv-d2">Real feedback from real members of the <span class="mono">Σ</span>urgical FX community.</p>
+            </div>
+            <div class="test-grid">
+                <div class="test-card rv">
+                    <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="test-text">"The signals are clean and the analysis behind each one actually teaches you something. I've learned more in 3 months here than a year on my own."</p>
+                    <div class="test-author"><div class="test-avatar">JR</div><div><div class="test-name">James R.</div><div class="test-role">Member since 2023</div></div></div>
+                </div>
+                <div class="test-card rv rv-d2">
+                    <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="test-text">"Malik's approach to risk management changed my entire perspective on trading. The discipline this community builds is unmatched."</p>
+                    <div class="test-author"><div class="test-avatar">TK</div><div><div class="test-name">Tyler K.</div><div class="test-role">Member since 2022</div></div></div>
+                </div>
+                <div class="test-card rv rv-d4">
+                    <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="test-text">"Finally a trading community that isn't all hype. The signals are surgical — precise entries, clear exits. Exactly what I needed."</p>
+                    <div class="test-author"><div class="test-avatar">DA</div><div><div class="test-name">David A.</div><div class="test-role">Member since 2024</div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FINAL CTA ═══════ -->
+    <section class="cta-section" id="join">
+        <div class="cta-orb"></div>
+        <div class="cta-content container">
+            <div class="section-label rv" style="justify-content: center;">Join Us</div>
+            <h2 class="cta-title rv rv-d1">Ready to trade<br>like a <span class="accent">surgeon</span>?</h2>
+            <p class="cta-desc rv rv-d2">Stop guessing. Start executing. Join a community that treats trading as a craft — precise, disciplined, and relentless.</p>
+            <div class="cta-actions rv rv-d3">
+                <a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.36-.687.772-1.341 1.225-1.962a.074.074 0 0 0-.041-.105 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
+                    Join the Discord
+                </a>
+                <a href="https://www.instagram.com/surgicalfx_" target="_blank" rel="noopener" class="btn btn-glass">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Follow on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="assets/logo.jpg" alt="Surgical FX" class="footer-logo">
+                    <span class="footer-brand-text"><span class="mono">Σ</span>urgical FX</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://discord.gg/PkYtX9JW" target="_blank" rel="noopener" class="footer-social" aria-label="Discord">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.36-.687.772-1.341 1.225-1.962a.074.074 0 0 0-.041-.105 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/surgicalfx_" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-disclaimer"><strong>Risk Disclaimer:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite. Past performance is not indicative of future results.</div>
+            <div class="footer-copyright">&copy; 2025 <span class="mono">Σ</span>urgical FX. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        /* ── Ticker (safe DOM methods) ── */
+        const pairs = [
+            { pair: 'EUR/USD', price: '1.0847', change: '+0.12%', up: true },
+            { pair: 'GBP/USD', price: '1.2634', change: '+0.08%', up: true },
+            { pair: 'USD/JPY', price: '149.82', change: '-0.15%', up: false },
+            { pair: 'AUD/USD', price: '0.6521', change: '+0.22%', up: true },
+            { pair: 'USD/CHF', price: '0.8834', change: '-0.06%', up: false },
+            { pair: 'EUR/GBP', price: '0.8588', change: '+0.04%', up: true },
+            { pair: 'USD/CAD', price: '1.3642', change: '-0.11%', up: false },
+            { pair: 'NZD/USD', price: '0.6089', change: '+0.18%', up: true },
+            { pair: 'GBP/JPY', price: '189.24', change: '+0.25%', up: true },
+            { pair: 'EUR/JPY', price: '162.47', change: '-0.03%', up: false },
+        ];
+        const tickerEl = document.getElementById('ticker');
+        function buildTickerItems() {
+            for (let i = 0; i < 3; i++) {
+                pairs.forEach(p => {
+                    const item = document.createElement('span');
+                    item.className = 'ticker-item';
+                    const pairSpan = document.createElement('span');
+                    pairSpan.className = 'pair';
+                    pairSpan.textContent = p.pair;
+                    const priceText = document.createTextNode(' ' + p.price + ' ');
+                    const changeSpan = document.createElement('span');
+                    changeSpan.className = p.up ? 'up' : 'down';
+                    changeSpan.textContent = p.change;
+                    item.appendChild(pairSpan);
+                    item.appendChild(priceText);
+                    item.appendChild(changeSpan);
+                    tickerEl.appendChild(item);
+                });
+            }
+        }
+        buildTickerItems();
+
+        /* ── Nav scroll ── */
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        /* ── Mobile menu ── */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        document.querySelectorAll('.ml').forEach(l => {
+            l.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ── Scroll reveal ── */
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+        /* ── Animated counters ── */
+        const cObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                const target = parseInt(e.target.getAttribute('data-target'));
+                if (!target) return;
+                let current = 0;
+                const inc = target / 50;
+                const timer = setInterval(() => {
+                    current += inc;
+                    if (current >= target) {
+                        e.target.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        e.target.textContent = Math.floor(current) + '+';
+                    }
+                }, 25);
+                cObs.unobserve(e.target);
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-num[data-target]').forEach(el => cObs.observe(el));
+
+        /* ── Hero candlesticks ── */
+        const candleBox = document.getElementById('heroCandles');
+        for (let i = 0; i < 25; i++) {
+            const c = document.createElement('div');
+            c.classList.add('candle', Math.random() > 0.5 ? 'g' : 'r');
+            c.style.left = Math.random() * 100 + '%';
+            c.style.top = Math.random() * 100 + '%';
+            c.style.height = (20 + Math.random() * 60) + 'px';
+            c.style.animationDelay = (Math.random() * 7) + 's';
+            c.style.animationDuration = (5 + Math.random() * 5) + 's';
+            candleBox.appendChild(c);
+        }
+
+        /* ── 3D Tilt on service cards ── */
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const xRot = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+                const yRot = ((e.clientY - rect.top) / rect.height - 0.5) * -6;
+                card.style.transform = 'perspective(800px) rotateY(' + xRot + 'deg) rotateX(' + yRot + 'deg) translateY(-4px)';
+                card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+                card.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) translateY(0)';
+            });
+        });
+
+        /* ── Smooth scroll ── */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
